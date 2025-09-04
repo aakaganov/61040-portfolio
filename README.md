@@ -4,6 +4,6 @@
 Some fun facts about me:
 1. I have dyed my hair every color in the rainbow at least once
 2. I am currently learning Spanish and Russian
-3. My mom is from Ireland and my dad is from Russia
+3. My family has a 19 year old clownfish, below is a photo of a clownfish, not my clownfish
 
-
+![images-uploads-clownfish_600_q85](https://github.com/user-attachments/assets/8193680b-f6a9-4747-b409-aea6f52ff1ad)
