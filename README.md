@@ -7,3 +7,6 @@ Some fun facts about me:
 3. My family has a 19 year old [clownfish](https://fantaseaaquariums.com/saltwater/how-long-do-clownfish-live/), below is a photo of a clownfish, not my clownfish
 
 ![images-uploads-clownfish_600_q85](https://github.com/user-attachments/assets/8193680b-f6a9-4747-b409-aea6f52ff1ad)
+
+# Assigments
+[assignment 1!!](https://github.com/aakaganov/61040-portfolio/blob/main/assignments/assignment1.md)
