@@ -1,6 +1,3 @@
-# Template Portfolio
-This will be your portfolio repository. Use this as a [template repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository) and customize it to your own tastes. We gave you a starting point with a space to describe yourself and a link to where your assignment 1 file can be.
-
 # About Me
 *My name is Anna Kaganov, I'm a senior majoring in 6-3 and 18. I am a coxswain on the Womens Light Weight Rowing team and I am from Ann Arbor, Michigan*
 
