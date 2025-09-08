@@ -9,4 +9,4 @@ Some fun facts about me:
 ![images-uploads-clownfish_600_q85](https://github.com/user-attachments/assets/8193680b-f6a9-4747-b409-aea6f52ff1ad)
 
 # Assigments
-[assignment 1!!](assignments/assignment1.md)
+[assignment 1!!]([assignments/assignment1.md](https://github.com/aakaganov/61040-portfolio/blob/main/assignments/assignment1.md))
