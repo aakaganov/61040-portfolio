@@ -42,8 +42,22 @@
       </ul>
     confirm (username: String, token: String) : (user: User): <br>
       <ul>
-        <b>requires</b> username needs to exist in UnconfiremdUsers, token needs to match token of that user. 
+        <b>requires</b> username needs to exist in UnconfiremdUsers, token needs to match token of that user. <br>
          <b>effects</b> create a new user with username and password and add it to Users, return User and remove this 
       </ul>
 
 ## Exercise 3
+<b>concept</b> PersonalAccessToken\[User\]<br>
+<b>purpose</b> an alternative to passwords for authentication to GitHub that allows for multiple tokens to be made for the same account<br>
+<b>principle</b> A user generates a personal access token that is now associated with that user. Users provide their username and token to be authenticated, a user can use any of the tokens currently related to that User. New tokens can be added at any time and individual tokens can be removed at any time.<br>
+<b>state</b><br>
+a set of Users with<br>
+
+<ul> a username String<br> a set of Tokens<br> <ul> a tokenName String<br> an active Flag<br> </ul> </ul>
+
+<b>actions</b><br>
+generateToken (user: User) : (token: Token)<br>
+
+<ul> <b>requires</b> user exists in set of Users<br> <b>effects</b> creates a new Token with a randomly generated tokenName, marks token as active, adds it to the set of Tokens of the specified user, and returns Token<br> </ul> revokeToken (user: User, token: Token)<br> <ul> <b>requires</b> user exists in set of Users, token exists within the set of Tokens associated with the user, and the token is active<br> <b>effects</b> marks the specified token as inactive<br> </ul> authenticate (username: String, tokenName: String) : (user: User) <br> <ul> <b>requires</b> username is associated with a User in the set of Users, tokenName is associated with an active token in the set of Tokens for that user<br> <b>effects</b> returns that User<br> </ul>
+
+**difference** The difference between a standard password and a token system is that with a password only one password is associated with that account. However, with a token system there can be several tokens associated with one account. This allows for safer automation and integration with external systems, and also means that if a token is compromised, it can be revoked without affecting the other tokens or the account password. 
