@@ -7,3 +7,43 @@
 5) Two common queries likely to be executed against the concept state: Registry owner might request what items have been purchased and a purchaser might request if a specific item has been purchased yet.
 6) I would add a hideUser value to the set of Registries and a hideUser value to the create action. If the creator of the registry set hideUser to be true when creating a registry, they will not be able to see the identities of the purchaser.
 7) Using SKU codes instead of names, descriptions, and prices is a better method because it allows for a unique and identifiable but still simple way to keep track of an Item. Names, descriptions, and price are all descriptors that could apply to many items or are too complicated to match to individual items.
+
+## Exercise 2
+1) a set of Users with<br>
+    <ul>a username String<br>
+      a password String<br>
+     </ul>
+2) register (username: String, password: String): (user: User)<br>
+      <ul>
+      <b>requires</b> username does not already exist in Users<br>
+      <b>effects</b> creates a new user with this username and password and add it to set of Users <br>
+      </ul>
+      
+   authenticate (username: String, password: String): (user: User)<br>
+     <ul>
+      <b>requires</b> username needs to exist within the set of Users, password to match with that Users recorded password<br>
+      <b>effects</b> return that User<br>
+    </ul>
+3) the essential invariant is that all usernames must be unique, otherwise users could access a seperate users account. This is preserved in the register action by the fact that username is required to not already exist in the set Users
+
+4) all listed items are only changed items, all other items from above not listed are expected to stay the same <br>
+   **State**<br>
+  a set of UnconfirmedUsers with<br>
+    <ul>
+      a username String<br>
+      a password String<br>
+      a token String<br>
+    </ul>
+   <b>Actions</b><br>
+    register (username: String, password: String, email: Email): (user: UnconfirmedUser)<br>
+      <ul>
+      <b>requires</b> username does not already exist in Users or UnconfirmedUsers, email needs to be a vaild email<br>
+      <b>effects</b> sends a confirmation email with a secret token to the email, creates new unconfirmed user with this username, password, and secret tokin, and add it to set of UnconfirmedUsers <br>
+      </ul>
+    confirm (username: String, token: String) : (user: User): <br>
+      <ul>
+        <b>requires</b> username needs to exist in UnconfiremdUsers, token needs to match token of that user. 
+         <b>effects</b> create a new user with username and password and add it to Users, return User and remove this 
+      </ul>
+
+## Exercise 3
