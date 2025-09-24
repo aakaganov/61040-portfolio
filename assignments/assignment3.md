@@ -45,7 +45,7 @@ then UrlShortening.delete (shortUrl: resource)
     increment (shortUrl: String)<br>
       <ul><b>effect</b> increases the count for shortUrl by 1<br></ul>
     getCount (shortUrl: String): (count: Number)<br>
-      <ul><b>equires</b> a record exists for shortUrl<br>
+      <ul><b>requires</b> a record exists for shortUrl<br>
       <b>effect</b> returns the count for shortUrl<br></ul>
 
 <b>​​concept</b> Ownership [ShortUrl]</b><br>
@@ -87,8 +87,8 @@ then UrlShortening.delete (shortUrl: resource)
   <ul>if ok then Analytics.getCount (shortUrl)<br></ul>
 
 3) 
-<b>Allowing users to choose their own short URLs</b> : <br>
-<b>Using the “word as nonce” strategy to generate more memorable short URLs</b> : <br>
-<b>Including the target URL in analytics, so that lookups of different short URLs can be grouped together when they refer to the same target URL </b> : <br>
-<b>Generate short URLs that are not easily guessed </b>: <br>
-<b>Supporting reporting of analytics to creators of short URLs who have not registered as user </b>: <br>
+<b>Allowing users to choose their own short URLs</b> : Add a new request for Request.customShortenUrl, this request takes in a suffix argument. Sync this request with UrlShortening.register, with this method NonceGeneration is not needed because UrlShortening.register already checks for collisions. <br>
+<b>Using the “word as nonce” strategy to generate more memorable short URLs</b> : Replace NonceGeneration with WordNonceGeneration, the difference between the two is that WordNonceGeneration will select nonces from a dictionary of words instead of random strings. Swap the sync generate in order to call WordNonceGeneration. <br>
+<b>Including the target URL in analytics, so that lookups of different short URLs can be grouped together when they refer to the same target URL </b> : Extend Analytics concept to group counts by (targetUrl) as well as (shortUrl). Add the new action getTargetCount (targetUrl). Then add a sync from UrlShortening.register to initialize the records. <br>
+<b>Generate short URLs that are not easily guessed </b>: In order to accomplish this task we require a stronger nonce generator, meaning the nonce generation needs to be longer and/or randomized. This can be achieved by modifying NonceGeneration.generate to accommodate such requirements(e.g., cryptographic randomness instead of sequential counter).<br>
+<b>Supporting reporting of analytics to creators of short URLs who have not registered as user </b>: This feature is undesirable because it goes against the ownership concept which requires a userID. This feature breaks the principle of restricting analytics visibility. It could also raise privacy risks if analytics become public.<br>
