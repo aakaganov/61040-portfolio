@@ -31,6 +31,64 @@ when ExpiringResource.expireResource (): (resource)
 then UrlShortening.delete (shortUrl: resource)
 
 ## Extending the design
-1) f
-2) f
-3) f
+1) 
+<b>concept</b> Analytics [ShortUrl]<br>
+  <b>purpose</b> track number of times each short URL is accessed<br>
+  <b>principle</b> every lookup of a short URL increases its count<br>
+  <b>state</b><br>
+    a set of Records with<br>
+    <ul>
+      shortUrl String<br>
+      count Number<br>
+   </ul>
+  <b>actions</b><br>
+    increment (shortUrl: String)<br>
+      <ul><b>effect</b> increases the count for shortUrl by 1<br></ul>
+    getCount (shortUrl: String): (count: Number)<br>
+      <ul><b>equires</b> a record exists for shortUrl<br>
+      <b>effect</b> returns the count for shortUrl<br></ul>
+
+<b>​​concept</b> Ownership [ShortUrl]</b><br>
+  <b>purpose</b> restrict analytics visibility to the user who created the short URL</b><br>
+  <b>principle</b> only the owner of a short URL can view its analytics</b><br>
+  <b>state</b><br>
+    a set of Owners with<br>
+    <ul>
+      userId String<br>
+      shortUrl String<br></ul>
+  <b>actions</b><br>
+    assign (userId: String, shortUrl: String)<br>
+      <ul><b>effect</b> records that userId is the owner of shortUrl<br></ul>
+    checkOwner (userId: String, shortUrl: String): (ok: Boolean)<br>
+      <ul><b>effect</b> returns true if userId owns shortUrl, else false<br></ul>
+2) 
+**Shortening created**:<br>
+<b>sync</b> initAnalyticsAndOwnership<br>
+<b>when</b><br>
+  <ul>Request.shortenUrl (targetUrl, shortUrlBase, userId)<br>
+  UrlShortening.register (): (shortUrl)<br></ul>
+<b>then</b><br>
+  <ul>Analytics.increment (shortUrl)<br>              
+  Ownership.assign (userId, shortUrl)<br></ul>
+
+**Shortenings translated to targets**: <br>
+<b>sync</b> trackLookup<br>
+<b>when</b> 
+    <ul>UrlShortening.lookup (shortUrl)<br></ul>
+<b>then</b> 
+    <ul>Analytics.increment (shortUrl)<br></ul>
+
+**Requests analytics**: <br>
+<b>sync</b> viewAnalytics<br>
+<b>when</b><br>
+  <ul>Request.getAnalytics (shortUrl, userId)<br>
+  Ownership.checkOwner (userId, shortUrl): (ok)<br></ul>
+<b>then</b><br>
+  <ul>if ok then Analytics.getCount (shortUrl)<br></ul>
+
+3) 
+<b>Allowing users to choose their own short URLs</b> : <br>
+<b>Using the “word as nonce” strategy to generate more memorable short URLs</b> : <br>
+<b>Including the target URL in analytics, so that lookups of different short URLs can be grouped together when they refer to the same target URL </b> : <br>
+<b>Generate short URLs that are not easily guessed </b>: <br>
+<b>Supporting reporting of analytics to creators of short URLs who have not registered as user </b>: <br>
