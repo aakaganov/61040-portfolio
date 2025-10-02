@@ -162,6 +162,7 @@ Concept 1, Scroll Blocker,  stops users from endlessly scrolling in certain apps
 All of these concepts work on their own, but together they fit around the same basic idea: the user. Scroll blocking, accountability, dropout notifications, and task gating can each do their thing separately, but when you put them together, they create a system that helps users manage their social media use, get support from peers, and stay productive. LockIn tackles the problem of social media addiction from a few angles without making any single part too complicated.
 
 ## UI Sketches
+![NBMetadataCache](https://github.com/user-attachments/assets/ab4b7349-2ae2-4f01-b250-de06daac28df)
 
 ## User journey
 The user picks up their phone in the morning, planning to check social media, but the app immediately blocks scrolling on certain platforms because it’s during a blocked time. A message pops up reminding them that scrolling will be available later and nudges them to finish any pending tasks first. They check their to-do list and mark off a few tasks, and only after everything is done do the blocked apps become usable. During the day, their friends can see updates on their screen time, which adds a sense of accountability and a little friendly competition. Later, the user considers deleting the app to use social media, but doesnt because their peers would be notified. By the end of the day, the user has avoided mindless scrolling, completed their tasks, and stayed aware of both their own and their peers’ usage, making social media use more intentional and focused.
