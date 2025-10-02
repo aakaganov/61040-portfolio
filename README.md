@@ -12,3 +12,4 @@ Some fun facts about me:
 [assignment 1!!](https://github.com/aakaganov/61040-portfolio/blob/main/assignments/assignment1.md)<br>
 [assignment 2!!](https://github.com/aakaganov/61040-portfolio/blob/main/assignments/assignment2.md)<br>
 [assignment 3!!](https://github.com/aakaganov/61040-portfolio/blob/main/assignments/assignment3.md)<br>
+[assignment 4!!](https://github.com/aakaganov/61040-portfolio/blob/main/assignments/assignment4.md)<br>
