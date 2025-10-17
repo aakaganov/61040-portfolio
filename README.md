@@ -14,3 +14,4 @@ Some fun facts about me:
 [assignment 3!!](https://github.com/aakaganov/61040-portfolio/blob/main/assignments/assignment3.md)<br>
 [assignment 4!!](https://github.com/aakaganov/61040-portfolio/blob/main/assignments/assignment4.md)<br>
 [assignment 5!!](https://github.com/aakaganov/assignment3_AIAugmentation)<br>
+[assignment 6!!](https://github.com/aakaganov/LockInAssignment)<br>
